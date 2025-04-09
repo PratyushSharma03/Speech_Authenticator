@@ -15,7 +15,7 @@ A Flask-based web application that enables users to **register with their name a
 
 ---
 
-## Screenshots
+## 📸 Screenshots
 
 [Speech Authenticator Page](https://drive.google.com/file/d/1LB_VQjHa3bAlfk2OCt4Ke4Wud9vMbLh-/view?usp=sharing)
 
