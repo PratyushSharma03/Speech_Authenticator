@@ -25,7 +25,7 @@ A Flask-based web application that enables users to **register with their name a
 
 ---
 
-1. **Clone this repository**
+**Clone this repository**
 
 ```bash
 git clone https://github.com/your-username/speech-authenticator.git
