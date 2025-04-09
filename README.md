@@ -17,9 +17,11 @@ A Flask-based web application that enables users to **register with their name a
 
 ## Screenshots
 
-![Screenshot 1](assets/images/screenshot1.png)
-![Screenshot 2](assets/images/screenshot2.png)
-![Screenshot 3](assets/images/screenshot3.png)
+## Screenshots
+
+[Screenshot 1](https://drive.google.com/file/d/1p9g4TVqcDaHda2CufuaVPIb-l2ryXcxq/view?usp=sharing)  
+[Screenshot 2](https://drive.google.com/file/d/1Ip2PDusQWwkOJCC4XKPyCaBrz7zRxlWl/view?usp=sharing)  
+[Screenshot 3](https://drive.google.com/file/d/1LB_VQjHa3bAlfk2OCt4Ke4Wud9vMbLh-/view?usp=sharing)
 
 ---
 
