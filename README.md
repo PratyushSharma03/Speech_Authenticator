@@ -14,3 +14,12 @@ The interface supports both **microphone input** and **file upload**, making it 
 - 🎤 **Mic or File Upload**: Record your voice directly or upload an existing audio file.
 - ❌ **Access Control**: Denies access if the spoken phrase doesn't match any user's registered passphrase.
 - 👤 **Dynamic Success Screen**: Displays your name on successful login.
+
+---
+
+1. **Clone this repository**
+
+```bash
+git clone https://github.com/your-username/speech-authenticator.git
+cd speech-authenticator
+  
