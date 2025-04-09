@@ -15,6 +15,14 @@ A Flask-based web application that enables users to **register with their name a
 
 ---
 
+## Screenshots
+
+![Screenshot 1](assets/images/screenshot1.png)
+![Screenshot 2](assets/images/screenshot2.png)
+![Screenshot 3](assets/images/screenshot3.png)
+
+---
+
 1. **Clone this repository**
 
 ```bash
