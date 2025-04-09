@@ -1,6 +1,6 @@
 # 🔐 Speech Authenticator (with Custom Voice Registration)
 
-A Flask-based web application that enables users to **register with their name and a personalized voice passphrase**, then **log in using their voice**. The app uses [OpenAI's Whisper model](https://github.com/openai/whisper) to transcribe spoken input and authenticates users by matching the transcript with the stored passphrase. 
+A Flask-based web application that enables users to **register with their name and a personalized passphrase**, then **log in using their voice**. The app uses [OpenAI's Whisper model](https://github.com/openai/whisper) to transcribe spoken input and authenticates users by matching the transcript with the stored passphrase. 
 
 The interface supports both **microphone input** and **file upload**, making it intuitive and secure.
 
