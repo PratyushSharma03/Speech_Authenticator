@@ -1,181 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login with Your Phrase</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #fff;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 600px;
-            margin: 150px auto;
-            padding: 20px;
-            background: #1e1e1e;
-            border-radius: 10px;
-            box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.3);
-        }
-        h1 {
-            color: cyan;
-            font-size: 32px;
-        }
-        .ref-box {
-            margin: 20px 0;
-            padding: 10px;
-            background-color: #222;
-            border-left: 5px solid cyan;
-            font-size: 14px;
-            line-height: 1.6;
-            color: #ccc;
-        }
-        input[type="file"] {
-            display: none;
-        }
-        .custom-file-upload, .mic-button {
-            display: inline-block;
-            padding: 10px 20px;
-            cursor: pointer;
-            background-color: cyan;
-            color: black;
-            border-radius: 5px;
-            margin: 10px 5px;
-        }
-        #file-name {
-            margin-top: 11px;
-            display: block;
-            font-size: 14px;
-            color: red;
-        }
-        button {
-            padding: 10px 20px;
-            border: none;
-            background-color: cyan;
-            color: black;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        button:hover {
-            background-color: #00b4d8;
-        }
-        .denied {
-            margin-top: 20px;
-            color: red;
-            font-weight: bold;
-        }
-        .custom-hr {
-            margin: 25px 0;
-            border-color: #333;
-        }
-        .register-link {
-            margin-top: 20px;
-            display: block;
-            color: #00bfff;
-        }
-        .au{
-          margin-bottom: 5px;
-          position: relative;
-          bottom: 9px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login with Your Phrase</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 100px auto;
+      padding: 20px;
+      background: #1e1e1e;
+      border-radius: 10px;
+      box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.3);
+    }
+    h1 {
+      color: cyan;
+      font-size: 32px;
+    }
+    .ref-box {
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #222;
+      border-left: 5px solid cyan;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #ccc;
+    }
+    input[type="file"] {
+      display: none;
+    }
+    .custom-file-upload {
+      display: inline-block;
+      padding: 10px 20px;
+      cursor: pointer;
+      background-color: cyan;
+      color: black;
+      border-radius: 5px;
+      margin: 10px 5px;
+    }
+    #file-name {
+      margin-top: 11px;
+      display: block;
+      font-size: 14px;
+      color: red;
+    }
+    select {
+      padding: 8px;
+      border-radius: 5px;
+      margin: 10px 0;
+      background-color: #222;
+      color: #fff;
+      border: 1px solid #444;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: cyan;
+      color: black;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #00b4d8;
+    }
+    .mic-button {
+      background-color: cyan;
+      margin-top: 15px;
+    }
+    .denied {
+      margin-top: 20px;
+      color: red;
+      font-weight: bold;
+    }
+    .custom-hr {
+      margin: 25px 0;
+      border-color: #333;
+    }
+    .register-link {
+      margin-top: 20px;
+      display: block;
+      color: #00bfff;
+    }
+    .au {
+      height: 42px;
+      margin-bottom: 5px;
+      position: relative;
+      bottom: 7px;
+      top: 1px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Speech Authenticator</h1>
+  <div class="container">
+    <h1>Speech Authenticator</h1>
 
-        <form id="uploadForm" method="POST" action="/transcribe" enctype="multipart/form-data" onsubmit="return checkFile()">
-            <label for="audioFile" class="custom-file-upload">Choose Audio File</label>
-            <input type="file" id="audioFile" name="audio_file" accept="audio/*" onchange="updateFileName()">
-            <span id="file-name">No file chosen</span>
-            <br>
-            <button class = "au" type="submit">Authenticate</button>
-        </form>
+    <form id="uploadForm" method="POST" action="/transcribe" enctype="multipart/form-data" onsubmit="return checkFile()">
+      <!-- Unified name dropdown -->
+      <select name="username" required>
+        <option value=""> Select Your Name </option>
+        {% for name in users %}
+          <option value="{{ name }}">{{ name }}</option>
+        {% endfor %}
+      </select>
 
-        {% if access_denied %}
-            <div class="denied">ACCESS DENIED</div>
-        {% endif %}
+      <br>
+      <br>
 
-        <hr class="custom-hr">
+      <!-- File upload -->
+      <label for="audioFile" class="custom-file-upload">Choose Audio File</label>
+      <input type="file" id="audioFile" name="audio_file" accept="audio/*" onchange="updateFileName()">
+      <span id="file-name">No file chosen</span>
+      <br>
 
-        <!-- Mic recording -->
-        <form id="micForm" method="POST" action="/transcribe" enctype="multipart/form-data">
-            <button type="button" class="mic-button" id="recordBtn">🎤 Speak Phrase</button>
-        </form>
+      <!-- Hidden mic file -->
+      <input type="file" id="micAudioFile" accept="audio/*" hidden />
 
-        <a href="/register" class="register-link">New user? Register here</a>
-    </div>
+      <!-- Single authenticate button -->
+      <button class="au" type="submit">Authenticate</button>
 
-    <script>
-        function updateFileName() {
-            const fileInput = document.getElementById("audioFile");
-            const fileName = document.getElementById("file-name");
-            fileName.textContent = fileInput.files.length > 0 ? fileInput.files[0].name : "No file chosen";
-        }
+      <!-- Mic recording button placed BELOW -->
+      <br>
+      <hr class="custom-hr">
+      <button type="button" class="mic-button" id="recordBtn">🎤 Speak Phrase</button>
+    </form>
 
-        function checkFile() {
-            const fileInput = document.getElementById("audioFile");
-            if (fileInput.files.length === 0) {
-                alert("Please select or record an audio file first.");
-                return false;
-            }
-            return true;
-        }
+    {% if access_denied %}
+      <div class="denied">ACCESS DENIED</div>
+    {% endif %}
 
-        const recordBtn = document.getElementById("recordBtn");
-        let mediaRecorder;
-        let isRecording = false;
-        let audioChunks = [];
+    <a href="/register" class="register-link">New user? Register here</a>
+  </div>
 
-        recordBtn.addEventListener("click", async () => {
-            if (isRecording) {
-                mediaRecorder.stop();
-                isRecording = false;
-                recordBtn.innerText = "🎤 Speak Phrase";
-                recordBtn.style.backgroundColor = "cyan";
-                return;
-            }
+  <script>
+    const fileInput = document.getElementById("audioFile");
+    const micAudioInput = document.getElementById("micAudioFile");
+    const fileNameDisplay = document.getElementById("file-name");
+    const recordBtn = document.getElementById("recordBtn");
 
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                mediaRecorder = new MediaRecorder(stream);
-                audioChunks = [];
+    let mediaRecorder;
+    let isRecording = false;
+    let audioChunks = [];
 
-                mediaRecorder.ondataavailable = event => {
-                    if (event.data.size > 0) {
-                        audioChunks.push(event.data);
-                    }
-                };
+    function updateFileName() {
+      fileNameDisplay.textContent = fileInput.files.length > 0
+        ? fileInput.files[0].name
+        : "No file chosen";
+    }
 
-                mediaRecorder.onstop = async () => {
-                    const blob = new Blob(audioChunks, { type: "audio/webm" });
-                    const fakeMP3File = new File([blob], "recording.mp3", { type: "audio/mp3" });
+    function checkFile() {
+      const hasUpload = fileInput.files.length > 0;
+      const hasMic = micAudioInput.files.length > 0;
 
-                    const dataTransfer = new DataTransfer();
-                    dataTransfer.items.add(fakeMP3File);
+      if (!hasUpload && !hasMic) {
+        alert("Please upload or record an audio file first.");
+        return false;
+      }
 
-                    const fileInput = document.getElementById("audioFile");
-                    fileInput.files = dataTransfer.files;
+      if (hasMic) {
+        fileInput.files = micAudioInput.files;
+      }
 
-                    updateFileName();
-                };
+      return true;
+    }
 
-                mediaRecorder.start();
-                isRecording = true;
-                recordBtn.innerText = "🛑 Stop Recording";
-                recordBtn.style.backgroundColor = "red";
+    recordBtn.addEventListener("click", async () => {
+      if (isRecording) {
+        mediaRecorder.stop();
+        isRecording = false;
+        recordBtn.innerText = "🎤 Speak Phrase";
+        recordBtn.style.backgroundColor = "cyan";
+        return;
+      }
 
-            } catch (err) {
-                console.error("Microphone access denied or failed", err);
-                alert("Failed to access microphone.");
-            }
-        });
-    </script>
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorder = new MediaRecorder(stream);
+        audioChunks = [];
+
+        mediaRecorder.ondataavailable = event => {
+          if (event.data.size > 0) {
+            audioChunks.push(event.data);
+          }
+        };
+
+        mediaRecorder.onstop = () => {
+          const blob = new Blob(audioChunks, { type: "audio/webm" });
+          const fakeMP3File = new File([blob], "recording.mp3", { type: "audio/mp3" });
+
+          const dataTransfer = new DataTransfer();
+          dataTransfer.items.add(fakeMP3File);
+
+          micAudioInput.files = dataTransfer.files;
+          fileInput.files = dataTransfer.files;
+
+          fileNameDisplay.textContent = "recording.mp3";
+        };
+
+        mediaRecorder.start();
+        isRecording = true;
+        recordBtn.innerText = "🛑 Stop Recording";
+        recordBtn.style.backgroundColor = "red";
+
+      } catch (err) {
+        console.error("Microphone access denied or failed", err);
+        alert("Failed to access microphone.");
+      }
+    });
+  </script>
 </body>
 </html>
