@@ -4,14 +4,30 @@ A Flask-based web application that enables users to **register with their name a
 
 ---
 
+---
+
 ## 🌟 Key Features
 
-- 📝 **User Registration**: Register with your name and a custom passphrase.
-- 🔊 **Voice Login**: Authenticate by speaking the exact passphrase you registered with.
-- 🧠 **Whisper Model Integration**: Transcribes audio input to text for precise comparison.
-- 🎤 **Mic or File Upload**: Record your voice directly or upload an existing audio file.
-- ❌ **Access Control**: Denies access if the spoken phrase doesn't match any user's registered passphrase.
-- 👤 **Dynamic Success Screen**: Displays your name on successful login.
+- 📝 **User Registration**  
+  Register your name along with a custom passphrase securely.
+
+- 🔊 **Voice Login**  
+  Authenticate yourself by speaking the exact passphrase you registered with.
+
+- 🧠 **Whisper Model Integration**  
+  Utilizes OpenAI's Whisper model to transcribe audio input into text for accurate comparison.
+
+- 🎤 **Mic or File Upload**  
+  Choose between recording your passphrase live or uploading an existing audio file.
+
+- 📂 **User Dropdown Menu**  
+  Select your registered name from a dynamically generated dropdown list before authentication.
+
+- ❌ **Access Control**  
+  If the spoken phrase doesn’t match the registered one, access is denied.
+
+- 👤 **Dynamic Success Screen**  
+  Upon successful authentication, the app displays a personalized success message with your name.
 
 ---
 
