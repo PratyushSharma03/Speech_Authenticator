@@ -33,7 +33,7 @@ A Flask-based web application that enables users to **register with their name a
 
 ## 📸 Screenshots
 
-[Speech Authenticator Page](https://drive.google.com/file/d/1LB_VQjHa3bAlfk2OCt4Ke4Wud9vMbLh-/view?usp=sharing)
+[Speech Authenticator Page](https://drive.google.com/file/d/1fYKRsEc5EXOMarA6Zw5dDrOlYLPFoDY5/view?usp=sharing)
 
 [Registration Page](https://drive.google.com/file/d/1Ip2PDusQWwkOJCC4XKPyCaBrz7zRxlWl/view?usp=sharing)  
 
